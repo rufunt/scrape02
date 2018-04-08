@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+import csv
 
 
 
@@ -7,6 +8,13 @@ from bs4 import BeautifulSoup
 def get_html(url):
 	r = requests.get(url)
 	return r.text
+
+def write_csv(data):
+	with open('news.csv', 'a') as f:
+	writer = csv.writer(f)
+
+	writer.writerow((data['title'], data['snipet'], data['url'] ))
+		
 
 
 def get_data(html):
@@ -17,7 +25,8 @@ def get_data(html):
 		title = n.find('h2').find('u').text.strip()
 		url = n.find('h2').find('a').get('href')
 		snippet = n.find('p').text.strip()
-		print(url)
+		
+		data = {'title': title, 'snipet': snipet, 'url': url}
 
 
 
