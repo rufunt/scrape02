@@ -13,9 +13,10 @@ def write_csv(data):
 	with open('cmc.csv', 'a') as f:
 		writer = csv.writer(f)
 
-		writer.writerow((data['title'], data['snipet'], data['url'] ))
+		pass
 		
-
+def get_page_data(html):
+	soup = BeautifulSoup(html, 'lxml')
 
 
 
