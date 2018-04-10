@@ -18,10 +18,18 @@ def write_csv(data):
 def get_page_data(html):
 	soup = BeautifulSoup(html, 'lxml')
 
+	trs = soup.find('table', id='currencies').find('tbody').find_all('tr')
+	
+	for tr in trs:
+		tds = tr.find_all('td')
+		name = tds[1].find('a', class_='currency-name-container').text
+		print(name)
+
 
 
 def main():
 	url = 'https://coinmarketcap.com/'
+	get_page_data(get_html(url))
 	
 	
 
