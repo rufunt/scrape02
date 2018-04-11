@@ -13,7 +13,7 @@ def write_csv(data):
 	with open('cmc.csv', 'a') as f:
 		writer = csv.writer(f)
 
-		pass
+		writer.writerow([data['name'], data['symbol'], data['url'], data['price']])
 		
 def get_page_data(html):
 	soup = BeautifulSoup(html, 'lxml')
@@ -23,7 +23,13 @@ def get_page_data(html):
 	for tr in trs:
 		tds = tr.find_all('td')
 		name = tds[1].find('a', class_='currency-name-container').text
-		print(name)
+		symbol = tds[1].find('a').text
+		url = 'https://coinmarketcap.com' + tds[1].find('a').get('href')
+		price = tds[3].find('a').get('data-usd')
+		
+		data = {'name': name, 'symbol': symbol, 'url': url, 'price': price}
+
+		write_csv(data)
 
 
 
