@@ -16,9 +16,8 @@ def write_csv(data):
 
 
 def main():
-    url = 'https://www.liveinternet.ru/rating/ru//today.tsv?page=2'
-    data = get_html(url).split('\n')
-    print(data)
+    url = 'https://footballhd.ru/allnews/'
+    
 
 if __name__ == '__main__':
     main()
