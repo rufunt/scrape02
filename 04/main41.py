@@ -10,16 +10,18 @@ def get_html(url):
     
 
 def write_csv(data):
-    with open('websites.csv', 'a') as f:
-        order = []
-        writer = csv.DictWriter(f, fieldnames=order)
-        writer.writerow(data)
+    with open('yaca.csv', 'a') as f:
+        writer = csv.writer(f
+        pass
+        
 
-
+def get_page_data(html):
+    soup = BeautifulSoup(html, 'lxml')
 
 
 def main():
     url = 'https://yandex.ua/yaca/cat/Sports/Football/1.html'
+    get_html(url)
     
 
 if __name__ == '__main__':
